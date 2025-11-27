@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>produk tembakau (bako linting) & assesoriesnya</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="../anjay/gambar/logo toko/logo.jpg toko/logo.jpg" />
+
+  <!-- FILE CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Produk Tembakau</h1>
+    <p>Kualitas terbaik, harga bersahabat</p>
+  </header>
+
+  <main class="section">
+
+    <!-- KATEGORI -->
+    <h2 style="text-align:center;">Kategori Produk</h2>
+
+    <div class="kategori-box" id="kategoriBox">
+      <div class="kategori-item" onclick="openKategori('PAPIR / KERTAS LINTING')">■ PAPIR / KERTAS LINTING</div>
+      <div class="kategori-item" onclick="openKategori('ALAT LINTING')">■ ALAT LINTING</div>
+      <div class="kategori-item" onclick="openKategori('BUSA / FILTER / SPONS')">■ BUSA / FILTER / SPONS</div>
+      <div class="kategori-item" onclick="openKategori('TEMBAKAU NUSANTARA')">■ TEMBAKAU NUSANTARA</div>
+      <div class="kategori-item" onclick="openKategori('ASESORIS ROKOK')">■ ASESORIS ROKOK</div>
+      <div class="kategori-item" onclick="openKategori('DLL')">■ DLL</div>
+    </div>
+
+    <h2 id="judulKategori" style="display:none; margin-top:30px;"></h2>
+
+    <!-- GRID PRODUK -->
+    <div class="products modern-grid" id="productGrid" style="display:none;"></div>
+
+    <!-- DETAIL PRODUK -->
+    <article id="detail-box" class="detail-panel hidden" aria-hidden="true">
+      <button class="back-btn" onclick="backToProduk()">◀ Kembali</button>
+
+      <div id="detail-content" class="detail-content">
+
+        <!-- FOTO KATALOG -->
+        <div class="left-col">
+          <div class="catalog-photos">
+            <img id="catalogPrimary" class="catalog-primary" src="" alt="">
+            <div class="catalog-secondary-row">
+              <img id="catalogSecondary1" class="catalog-secondary" src="" alt="">
+              <img id="catalogSecondary2" class="catalog-secondary" src="" alt="">
+            </div>
+          </div>
+        </div>
+
+        <!-- GALERI DETAIL -->
+        <div class="gallery-box">
+          <img id="detailImg" class="main-img" src="" alt="detail gambar">
+          <div id="thumbContainer" class="thumb-row"></div>
+        </div>
+
+        <!-- INFO DETAIL (FIX FINAL) -->
+        <aside class="right-col">
+          
+          <h2 id="detailNama">Nama Produk</h2>
+
+          <!-- MERK DIPALING ATAS -->
+          <p class="merk-top">
+            <strong>Merk:</strong> <span id="detailMerk"></span>
+          </p>
+
+          <!-- HARGA -->
+          <div class="price" id="detailPrice">Rp 0</div>
+
+          <!-- RINGKASAN SINGKAT -->
+          <p class="lead" id="detailLead">Ringkasan singkat produk.</p>
+
+          <!-- DESKRIPSI 4 BARIS -->
+          <div class="full-desc" id="detailDesk"></div>
+
+          <!-- SPESIFIKASI LAIN -->
+          <div class="specs">
+            <p><strong>Rasa:</strong> <span id="detailRasa"></span></p>
+            <p><strong>Isi:</strong> <span id="detailIsi"></span></p>
+            <p><strong>Size:</strong> <span id="detailSize"></span></p>
+            <p><strong>Berat:</strong> <span id="detailBerat"></span></p>
+            <p><strong>Stok:</strong> <span id="detailStock"></span></p>
+          </div>
+
+          <div class="actions">
+            <div class="qty">
+              <button class="btn ghost" onclick="changeDetailQty(-1)">-</button>
+              <input id="detailQty" type="number" value="1" min="1" />
+              <button class="btn ghost" onclick="changeDetailQty(1)">+</button>
+            </div>
+
+            <button id="detailAddCart" class="btn">+ Keranjang</button>
+          </div>
+        </aside>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- FLOATING CART -->
+  <div id="cart-float">🛒 <span id="cart-count">0</span></div>
+
+  <!-- PANEL KERANJANG -->
+  <div id="cart-panel">
+    <div id="cart-box">
+      <h2>Keranjang</h2>
+
+      <div id="cart-items"></div>
+
+      <h3>Total: Rp <span id="cart-total">0</span></h3>
+
+      <button id="checkout" class="checkout-btn">Checkout</button>
+      <button id="close-cart" class="close-btn">Tutup</button>
+    </div>
+  </div>
+
+  <!-- PANEL ALAMAT -->
+  <div id="alamat-panel">
+    <div class="alamat-box">
+      <h2>Masukkan Data Pengiriman</h2>
+
+      <input id="alamat-input" placeholder="Ketik alamat lengkap…">
+
+      <label>Jenis Ongkir:</label>
+      <select id="jenis-ongkir">
+        <option>Reguler</option>
+        <option>Sameday</option>
+        <option>Cargo</option>
+      </select>
+
+      <label>Pilih Kurir:</label>
+      <select id="kurir">
+        <option>JNE</option>
+        <option>JNT</option>
+      </select>
+
+      <label>Pilih Metode Pembayaran:</label>
+      <select id="payment">
+        <option>E-Wallet</option>
+        <option>Transfer Bank</option>
+        <option>Qris</option>
+      </select>
+
+      <button id="confirm-alamat" class="alamat-btn">Kirim via WhatsApp</button>
+      <button id="close-alamat" class="alamat-btn">Batal</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <footer>
+    © 2025 Toko Rokok Digital - Semua hak dilindungi.
+  </footer>
+
+</body>
+</html>
