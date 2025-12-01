@@ -334,8 +334,7 @@ const produkList = [
     nama: "MILD 1 Klik Rasa ANGGUR 30 gr",
     merk: "MILD",
     rasa: "Anggur",
-    isi: 170 ,                 // isi 30 gr
-    size: "Mild 1 klik",
+    isi: 170,                 // 170 butir (±30 gr)
     harga: 13000,
     stok: 1000,
     berat: 30,
@@ -352,6 +351,49 @@ const produkList = [
       "Ukuran: Mild 1 klik · Rasa ANGGUR · Isi 30 gr · Quality Premium."
     ],
   },
+  {
+    nama: "7 Mild KLIK BUBLEGUME 30 gr Premium",
+    merk: "MILD",
+    rasa: "BUBLEGUME",
+    isi: 170,                 // 170 butir (±30 gr)
+    harga: 13000,
+    stok: 1000,
+    berat: 30,
+    kategori: "BUSA / FILTER / SPONS",
+    gambar: [
+      "gambar/BUSA/BUSA_BUBLEGUM/IMG-20251122-WA0075.jpg",
+      "gambar/BUSA/BUSA_BUBLEGUM/IMG-20251122-WA0083.jpg",
+    ],
+    deskripsi: [
+      "Nikmati Citarasa Lintingan Sendiri.",
+      "Nyalakan Semangat Mu...",
+      "Bangkitkan Inspirasi Mu...",
+      "Happy Kaum Lintingers...",
+      "Ukuran: Mild 1 klik · Rasa BUBLEGUME · Isi 30 gr · Quality Premium."
+    ],
+  },
+    {
+    nama: "Mild 1 klik Rasa APPLE",
+    merk: "MILD",
+    rasa: "APPLE",
+    isi: 170,                 // 170 butir (±30 gr)
+    harga: 13000,
+    stok: 1000,
+    berat: 30,
+    kategori: "BUSA / FILTER / SPONS",
+    gambar: [
+      "gambar/BUSA/BUSA_APPLE/IMG-20251122-WA0079.jpg",
+      "gambar/BUSA/BUSA_APPLE/IMG-20251122-WA0076.jpg",
+    ],
+    deskripsi: [
+      "Nikmati Citarasa Lintingan Sendiri.",
+      "Nyalakan Semangat Mu...",
+      "Bangkitkan Inspirasi Mu...",
+      "Happy Kaum Lintingers...",
+      "Ukuran: Mild 1 klik · Rasa APPLE · Isi 30 gr · Quality Premium."
+    ],
+  },
+  
 ];
 
 /* ============================================================
@@ -471,14 +513,24 @@ function showDetail(nama) {
   document.getElementById("detailMerk").textContent = p.merk;
   document.getElementById("detailRasa").textContent = p.rasa;
 
-  // Isi: untuk produk ANGGUR pakai satuan gr, lainnya lembar
-  if (p.nama === "MILD 1 Klik Rasa ANGGUR 30 gr") {
-    document.getElementById("detailIsi").textContent = p.isi + " gr";
+  // handle elemen ukuran (size)
+  const sizeEl = document.getElementById("detailSize");
+  const sizeRow = sizeEl ? sizeEl.parentElement : null;
+
+  // Isi: untuk kategori BUSA pakai satuan butir, lainnya lembar
+  if (p.kategori === "BUSA / FILTER / SPONS") {
+    document.getElementById("detailIsi").textContent = p.isi + " butir";
+
+    // sembunyikan baris ukuran untuk kategori busa
+    if (sizeRow) sizeRow.style.display = "none";
   } else {
     document.getElementById("detailIsi").textContent = p.isi + " lembar";
+
+    // tampilkan lagi baris ukuran untuk kategori lain
+    if (sizeRow) sizeRow.style.display = "";
+    if (sizeEl) sizeEl.textContent = p.size;
   }
 
-  document.getElementById("detailSize").textContent = p.size;
   document.getElementById("detailBerat").textContent = formatBerat(p.berat);
   document.getElementById("detailStock").textContent = p.stok;
 
