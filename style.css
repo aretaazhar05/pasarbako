@@ -48,7 +48,7 @@ header p {
 
 /* WRAPPER */
 .section {
-  padding: 30px 20px;
+  padding: 30px 20px 10px;   /* ↓ padding bawah diperkecil */
   max-width: 1100px;
   margin: auto;
 }
@@ -301,6 +301,8 @@ header p {
   cursor: pointer;
   z-index: 1200;
   box-shadow: 0 6px 18px rgba(0,0,0,.2);
+  border: none;
+  outline: none;
 }
 
 /* MODAL BACKDROP (KERANJANG) */
@@ -523,16 +525,10 @@ button {
   font-family: inherit;
 }
 
-/* Supaya tombol cart tidak ada border default */
-#cart-float {
-  border: none;
-  outline: none;
-}
-
 /* FOOTER */
 footer {
-  margin-top: 40px;
-  padding: 16px 20px;
+  margin-top: 16px;          /* ↓ jarak atas footer diperkecil */
+  padding: 12px 20px;        /* ↓ padding juga sedikit lebih kecil */
   text-align: center;
   font-size: 13px;
   color: #8a7b6e;
